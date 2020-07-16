@@ -7,7 +7,7 @@ import {
   loadPretrainedModelSucceeded,
   MnistAction,
   predictSucceeded,
-  trainingMnist
+  trainingMnist,
 } from '../actions/mnist';
 import HWDigitsClassifier from '../classifiers/handwritten-digits-classifier';
 import MnistData from '../data/mnist-data';
@@ -15,6 +15,8 @@ import { convertToGrayscale } from '../utils/image-processing';
 
 function* loadPretrainedModel() {
   const pretrainedHWClassifier = new HWDigitsClassifier();
+
+  // alias effect to invoke methods
   yield apply(pretrainedHWClassifier, pretrainedHWClassifier.loadModel);
 
   yield put(loadPretrainedModelSucceeded());
@@ -48,7 +50,7 @@ function* request(pretrainedHWClassifier) {
   while (true) {
     const action = yield take([
       MnistAction.PREDICT_REQUESTED,
-      MnistAction.LOAD_AND_TRAIN_MNIST_REQUESTED
+      MnistAction.LOAD_AND_TRAIN_MNIST_REQUESTED,
     ]);
 
     switch (action.type) {
