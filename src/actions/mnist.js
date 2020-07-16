@@ -6,35 +6,40 @@ export const MnistAction = {
   TRAINING_MNIST: 'TRAINING_MNIST',
   LOAD_AND_TRAIN_MNIST_SUCCEEDED: 'LOAD_AND_TRAIN_MNIST_SUCCEEDED',
   PREDICT_REQUESTED: 'PREDICT_REQUESTED',
-  PREDICT_SUCCEEDED: 'PREDICT_SUCCEEDED'
+  PREDICT_SUCCEEDED: 'PREDICT_SUCCEEDED',
+  RESET_PREDICTION: 'RESET_PREDICTION',
 };
 
 export const loadPretrainedModelSucceeded = () => ({
-  type: MnistAction.LOAD_PRETRAINED_MODEL_SUCCEEDED
+  type: MnistAction.LOAD_PRETRAINED_MODEL_SUCCEEDED,
 });
 
 export const loadAndTrainMnist = () => ({
-  type: MnistAction.LOAD_AND_TRAIN_MNIST_REQUESTED
+  type: MnistAction.LOAD_AND_TRAIN_MNIST_REQUESTED,
 });
 
 export const loadingMnist = () => ({
-  type: MnistAction.LOADING_MNIST
+  type: MnistAction.LOADING_MNIST,
 });
 
 export const trainingMnist = () => ({
-  type: MnistAction.TRAINING_MNIST
+  type: MnistAction.TRAINING_MNIST,
 });
 
 export const loadAndTrainMnistSucceeded = () => ({
-  type: MnistAction.LOAD_AND_TRAIN_MNIST_SUCCEEDED
+  type: MnistAction.LOAD_AND_TRAIN_MNIST_SUCCEEDED,
 });
 
-export const requestPredict = image => ({
+export const requestPredict = (image) => ({
   type: MnistAction.PREDICT_REQUESTED,
-  image
+  image,
 });
 
-export const predictSucceeded = prediction => ({
+export const predictSucceeded = (prediction) => ({
   type: MnistAction.PREDICT_SUCCEEDED,
-  prediction
+  prediction,
+});
+
+export const resetPrediction = () => ({
+  type: MnistAction.RESET_PREDICTION,
 });
