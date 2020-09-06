@@ -1,23 +1,17 @@
 import React from 'react';
-import { Layout } from 'antd';
+import { PageHeader } from 'antd';
 import styled from 'styled-components';
 
-const H1 = styled.h1`
-  color: white;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-`;
-
-const WhiteHeader = styled(Layout.Header)`
+const WhitePageHeader = styled(PageHeader)`
+  border: 1px solid rgb(235, 237, 240);
   background: dodgerblue;
   margin-bottom: 20px;
 `;
 
-export default function Header() {
+const Header = () => {
   return (
-    <WhiteHeader>
-      <H1>Handwritten digit recognition using Tensorflow.JS</H1>
-    </WhiteHeader>
+    <WhitePageHeader title="Handwritten digit recognition using Tensorflow.JS" />
   );
-}
+};
+
+export default Header;

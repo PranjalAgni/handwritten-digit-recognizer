@@ -1,10 +1,10 @@
 import React from 'react';
-import { Spin, Row } from 'antd';
+import { Spin } from 'antd';
 import CenterCol from './shared/CenterCol';
 import DrawingContainer from '../containers/Drawing';
 import OutputContainer from '../containers/Output';
 import ClearContainer from '../containers/Clear';
-export default function MnistDrawing({ spinning }) {
+const MnistDrawing = ({ spinning }) => {
   return (
     <Spin spinning={spinning}>
       <CenterCol xs={24}>
@@ -14,4 +14,6 @@ export default function MnistDrawing({ spinning }) {
       </CenterCol>
     </Spin>
   );
-}
+};
+
+export default MnistDrawing;

@@ -3,12 +3,12 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { addStroke, addStrokePos, endStroke } from '../actions/drawing';
 import { startPrediction } from '../actions/pipeline';
 import Drawing from '../components/Drawing';
-export default function DrawingContainer() {
+const DrawingContainer = () => {
   const drawingState = useSelector(
-    state => ({
+    (state) => ({
       isDrawing: state.drawing.isDrawing,
       isEndStroke: state.drawing.isEndStroke,
-      strokes: state.drawing.strokes
+      strokes: state.drawing.strokes,
     }),
     shallowEqual
   );
@@ -16,11 +16,13 @@ export default function DrawingContainer() {
   const dispatch = useDispatch();
 
   const drawingDispatch = {
-    addStroke: pos => dispatch(addStroke(pos)),
-    addStrokePos: pos => dispatch(addStrokePos(pos)),
+    addStroke: (pos) => dispatch(addStroke(pos)),
+    addStrokePos: (pos) => dispatch(addStrokePos(pos)),
     endStroke: () => dispatch(endStroke()),
-    startPrediction: img => dispatch(startPrediction(img))
+    startPrediction: (img) => dispatch(startPrediction(img)),
   };
 
   return <Drawing {...drawingState} {...drawingDispatch} />;
-}
+};
+
+export default DrawingContainer;

@@ -15,7 +15,7 @@ const Canvas = styled.canvas`
   } */
 `;
 
-export default function Drawing(props) {
+const Drawing = (props) => {
   let canvas = null;
   let ctx = null;
 
@@ -30,12 +30,12 @@ export default function Drawing(props) {
     }
   });
 
-  const onMouseDown = e => {
+  const onMouseDown = (e) => {
     const { addStroke } = props;
     addStroke(computeMousePos(e));
   };
 
-  const onMouseMove = e => {
+  const onMouseMove = (e) => {
     const { isDrawing, addStrokePos } = props;
     if (!isDrawing) {
       return;
@@ -52,7 +52,7 @@ export default function Drawing(props) {
     }
   };
 
-  const setCanvasRef = elt => {
+  const setCanvasRef = (elt) => {
     console.debug('Setting..... canvas!!');
     canvas = elt;
   };
@@ -72,19 +72,19 @@ export default function Drawing(props) {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
   };
 
-  const computeMousePos = e => ({
+  const computeMousePos = (e) => ({
     x: computeMousePosX(e),
-    y: computeMousePosY(e)
+    y: computeMousePosY(e),
   });
 
-  const computeMousePosX = e => {
+  const computeMousePosX = (e) => {
     const rect = canvas.getBoundingClientRect();
     const scaleX = canvas.width / rect.width;
 
     return (e.clientX - rect.left) * scaleX;
   };
 
-  const computeMousePosY = e => {
+  const computeMousePosY = (e) => {
     const rect = canvas.getBoundingClientRect();
     const scaleY = canvas.height / rect.height;
 
@@ -115,9 +115,11 @@ export default function Drawing(props) {
         onPointerMove={onMouseMove}
         onPointerUp={onStrokeEnd}
         onMouseLeave={onStrokeEnd}
-        width="280"
-        height="280"
+        width="480"
+        height="480"
       />
     </div>
   );
-}
+};
+
+export default Drawing;

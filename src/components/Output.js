@@ -5,7 +5,7 @@ const H2 = styled.h2`
   text-align: center;
 `;
 
-export default function Output({ prediction }) {
+const Output = ({ prediction }) => {
   return (
     <H2>
       {prediction != null
@@ -13,4 +13,6 @@ export default function Output({ prediction }) {
         : 'Draw a number (0-9) in the black box above'}
     </H2>
   );
-}
+};
+
+export default Output;

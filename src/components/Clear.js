@@ -1,10 +1,12 @@
 import React from 'react';
 import { Button } from 'antd';
 
-export default function Clear({ resetDrawing }) {
+const Clear = ({ resetDrawing }) => {
   return (
     <Button type="primary" onClick={resetDrawing}>
       Clear
     </Button>
   );
-}
+};
+
+export default Clear;

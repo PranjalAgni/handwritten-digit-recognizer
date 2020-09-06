@@ -9,6 +9,8 @@ import {
   predictSucceeded,
   trainingMnist,
 } from '../actions/mnist';
+
+import { setPredictedDigit } from '../actions/predicted';
 import HWDigitsClassifier from '../classifiers/handwritten-digits-classifier';
 import MnistData from '../data/mnist-data';
 import { convertToGrayscale } from '../utils/image-processing';
@@ -28,6 +30,7 @@ function* predict(pretrainedHWClassifier, image) {
   const dataTensor = tf.tensor(dataGrayscale, [1, 28, 28, 1]);
   const prediction = pretrainedHWClassifier.predict(dataTensor);
   yield put(predictSucceeded(prediction));
+  yield put(setPredictedDigit(prediction));
 }
 
 function* loadAndTrainMnist() {
